@@ -12,7 +12,7 @@ Use the repository's Community Applications listing once accepted, or add this r
 4. Generate `JWT_SECRET` with `openssl rand -hex 32`; paste the result into the masked field. Keep it stable and private.
 5. Set `EMAIL_NOREPLY` and your SMTP settings. Start Fider and create your site. Then optionally enable `SIGNUP_DISABLED` to disable creation of additional sites; users can still sign in to existing sites.
 
-Required values are intentionally blank. Masking hides values in the Unraid form; it does not encrypt Docker environment variables. Protect template files, Docker access and backups.
+The PostgreSQL field starts with `postgres://USERNAME:PASSWORD@HOST:5432/DATABASE` as a format example. Replace all four uppercase values before starting Fider; this does not provision a database. Other required values are intentionally blank. Masking hides values in the Unraid form; it does not encrypt Docker environment variables. Protect template files, Docker access and backups.
 
 ## Email
 
