@@ -1,6 +1,6 @@
 # Fider for Unraid
 
-A Docker template for [Fider](https://github.com/getfider/fider), using `getfider/fider:stable`. This repository supplies the Unraid template, not the Fider application. Repository files use the MIT license; Fider uses AGPL-3.0. The repository icon is a generic feedback symbol, not an official Fider logo.
+A Docker template for [Fider](https://github.com/getfider/fider), using `getfider/fider:stable`. This repository supplies the Unraid template, not the Fider application. Template code and documentation use the MIT license; Fider and the copied Fider logo use AGPL-3.0. The repository icon is a generic feedback symbol. The Fider application icon is an unchanged copy of the official project's `etc/logo.png`; see [asset attribution](icons/README.md).
 
 ## Installation
 

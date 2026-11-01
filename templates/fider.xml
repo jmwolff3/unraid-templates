@@ -11,7 +11,7 @@
   <Support>https://github.com/jmwolff3/unraid-templates/issues</Support>
   <TemplateURL>https://raw.githubusercontent.com/jmwolff3/unraid-templates/main/templates/fider.xml</TemplateURL>
   <ReadMe>https://raw.githubusercontent.com/jmwolff3/unraid-templates/main/README.md</ReadMe>
-  <Icon>https://avatars.githubusercontent.com/u/25187431?s=60&amp;v=4</Icon>
+  <Icon>https://raw.githubusercontent.com/jmwolff3/unraid-templates/main/icons/fider.png</Icon>
   <Category>Productivity:</Category>
   <ExtraSearchTerms>feedback feature requests voting</ExtraSearchTerms>
   <Requires>PostgreSQL and outbound email</Requires>
