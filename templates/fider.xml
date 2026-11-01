@@ -1,0 +1,37 @@
+<Container version="2">
+  <Name>Fider</Name>
+  <Repository>getfider/fider:stable</Repository>
+  <Registry>https://hub.docker.com/r/getfider/fider</Registry>
+  <Network>bridge</Network>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <WebUI>http://[IP]:[PORT:3000]</WebUI>
+  <Overview>Collect and discuss product feedback with Fider. Requires an external PostgreSQL database and a working email provider. Configure the public BASE_URL before starting.</Overview>
+  <Project>https://github.com/getfider/fider</Project>
+  <Support>https://github.com/jmwolff3/unraid-templates/issues</Support>
+  <TemplateURL>https://raw.githubusercontent.com/jmwolff3/unraid-templates/main/templates/fider.xml</TemplateURL>
+  <ReadMe>https://raw.githubusercontent.com/jmwolff3/unraid-templates/main/README.md</ReadMe>
+  <Icon>https://raw.githubusercontent.com/jmwolff3/unraid-templates/main/icons/fider.png</Icon>
+  <Category>Productivity:</Category>
+  <ExtraSearchTerms>feedback feature requests voting</ExtraSearchTerms>
+  <Requires>PostgreSQL and outbound email</Requires>
+  <License>AGPL-3.0</License>
+  <Config Name="WebUI Port" Target="3000" Default="3000" Description="HTTP host port. Container port remains 3000." Type="Port" Display="always" Required="true" Mask="false" Mode="tcp">3000</Config>
+  <Config Name="Public URL" Target="BASE_URL" Default="" Description="Full public URL including https:// when using a reverse proxy." Type="Variable" Display="always" Required="true" Mask="false" />
+  <Config Name="PostgreSQL URL" Target="DATABASE_URL" Default="" Description="PostgreSQL connection URL. Use a reachable host, not localhost. Percent-encode special characters in credentials." Type="Variable" Display="always" Required="true" Mask="true" />
+  <Config Name="Session secret" Target="JWT_SECRET" Default="" Description="Generate a long random secret, for example with openssl rand -hex 32. Changing it signs everyone out." Type="Variable" Display="always" Required="true" Mask="true" />
+  <Config Name="Sender address" Target="EMAIL_NOREPLY" Default="" Description="Verified From email address." Type="Variable" Display="always" Required="true" Mask="false" />
+  <Config Name="Email provider" Target="EMAIL" Default="smtp" Description="smtp, mailgun or awsses. See README for alternate provider variables." Type="Variable" Display="advanced" Required="true" Mask="false">smtp</Config>
+  <Config Name="SMTP host" Target="EMAIL_SMTP_HOST" Default="" Description="Required for SMTP. Not required for Mailgun or SES." Type="Variable" Display="always" Required="false" Mask="false" />
+  <Config Name="SMTP port" Target="EMAIL_SMTP_PORT" Default="587" Description="Required for SMTP. Usually 587 with STARTTLS or 465 with implicit TLS." Type="Variable" Display="always" Required="false" Mask="false">587</Config>
+  <Config Name="SMTP username" Target="EMAIL_SMTP_USERNAME" Default="" Description="Optional if the SMTP server does not require authentication." Type="Variable" Display="always" Required="false" Mask="false" />
+  <Config Name="SMTP password" Target="EMAIL_SMTP_PASSWORD" Default="" Description="Optional if the SMTP server does not require authentication." Type="Variable" Display="always" Required="false" Mask="true" />
+  <Config Name="SMTP STARTTLS" Target="EMAIL_SMTP_ENABLE_STARTTLS" Default="true" Description="Use true for port 587; use false for implicit TLS on port 465." Type="Variable" Display="advanced" Required="false" Mask="false">true</Config>
+  <Config Name="SMTP implicit TLS" Target="EMAIL_SMTP_ENABLE_IMPLICIT_TLS" Default="false" Description="Set true for port 465 and disable STARTTLS." Type="Variable" Display="advanced" Required="false" Mask="false">false</Config>
+  <Config Name="File storage" Target="BLOB_STORAGE" Default="sql" Description="sql, fs or s3. Additional settings required for fs or s3; see README." Type="Variable" Display="advanced" Required="true" Mask="false">sql</Config>
+  <Config Name="Disable site creation" Target="SIGNUP_DISABLED" Default="false" Description="Set true after initial setup. Existing site users can still sign in." Type="Variable" Display="advanced" Required="false" Mask="false">false</Config>
+  <Config Name="Locale" Target="LOCALE" Default="en" Description="Default locale." Type="Variable" Display="advanced" Required="false" Mask="false">en</Config>
+  <Config Name="Log level" Target="LOG_LEVEL" Default="INFO" Description="Application log level." Type="Variable" Display="advanced" Required="false" Mask="false">INFO</Config>
+  <Config Name="Metrics" Target="METRICS_ENABLED" Default="false" Description="Enable application metrics." Type="Variable" Display="advanced" Required="false" Mask="false">false</Config>
+  <Config Name="Automatic HTTPS" Target="SSL_AUTO" Default="false" Description="Keep false behind a reverse proxy. Direct automatic HTTPS requires ports 80 and 443; see README." Type="Variable" Display="advanced" Required="false" Mask="false">false</Config>
+</Container>
