@@ -62,7 +62,8 @@ def validate():
                     check(c.get('Mode') in ('tcp', 'udp'), path, 'invalid port protocol')
                 if c.get('Target') in ('DATABASE_URL', 'JWT_SECRET', 'EMAIL_SMTP_PASSWORD'):
                     check(c.get('Mask') == 'true', path, 'credential must be masked')
-                    check(not c.get('Default') and not (c.text or '').strip(), path, 'credential default must be empty')
+                    allowed_default = 'postgres://USERNAME:PASSWORD@HOST:5432/DATABASE' if c.get('Target') == 'DATABASE_URL' else ''
+                    check(c.get('Default', '') == allowed_default and (c.text or '').strip() == allowed_default, path, 'credential default must be empty or the exact DATABASE_URL example')
             for port in re.findall(r'\[PORT:(\d+)\]', root.findtext('WebUI', '')):
                 check(('Port', port) in targets, path, 'WebUI references an unmapped container port')
     check((ROOT / 'ca_profile.xml').is_file(), ROOT / 'ca_profile.xml', 'profile missing')
